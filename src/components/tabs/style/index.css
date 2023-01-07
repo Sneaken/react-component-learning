@@ -141,6 +141,11 @@
   transform: translate(0);
 }
 
+.tabs-centered > .tabs-nav .tabs-nav-wrap:not([class*='.tabs-nav-wrap-ping']),
+.tabs-centered > div > .tabs-nav .tabs-nav-wrap:not([class*='.tabs-nav-wrap-ping']) {
+  justify-content: center;
+}
+
 .tabs-tab-btn {
   outline: none;
   transition: all 0.3s;
