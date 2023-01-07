@@ -111,6 +111,10 @@
   cursor: pointer;
 }
 
+.tabs .tabs-tab:hover {
+  color: #4096ff
+}
+
 .tabs-large > .tabs-nav .tabs-tab {
   padding: 16px 0;
   font-size: 16px;
