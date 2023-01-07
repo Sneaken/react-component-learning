@@ -24,7 +24,7 @@ import TabContext from './TabContext';
 export type TabsType = 'line' | 'card' | 'editable-card';
 export type SizeType = 'small' | 'middle' | 'large';
 
-interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'children'> {
+export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'children'> {
   activeKey?: string;
   addIcon?: ReactNode;
   animated?: boolean | AnimatedConfig;
@@ -170,7 +170,5 @@ function Tabs(props: TabsProps, ref: Ref<HTMLDivElement>) {
     </TabContext.Provider>
   );
 }
-
-export type { TabsProps };
 
 export default forwardRef(Tabs);
