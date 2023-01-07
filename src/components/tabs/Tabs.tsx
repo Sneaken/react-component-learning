@@ -140,7 +140,6 @@ function Tabs(props: TabsProps, ref: Ref<HTMLDivElement>) {
     moreTransitionName: 'slide-up',
     onTabClick: onInternalTabClick,
     onTabScroll,
-    panes: null,
     popupClassName,
     style: tabBarStyle,
     tabBarGutter,
