@@ -24,7 +24,7 @@ const TabPane = forwardRef<HTMLDivElement, TabPaneProps>(({ className, style, ac
       role="tabpanel"
       tabIndex={active ? 0 : -1}
       style={style}
-      className={classnames('tabs', active && 'tabs-active', className)}
+      className={classnames('tabs-tabpane', active && 'tabs-active', className)}
       ref={ref}
     >
       {children}
