@@ -1,6 +1,6 @@
 import React, { forwardRef, Ref, useState } from 'react';
 import { Tabs as AntdTab } from 'antd';
-import { ResizeObserver, Tabs } from '../components';
+import { Tabs } from '../components';
 
 const Label = forwardRef((props, ref: Ref<any>) => {
   return <p ref={ref}>222</p>;
@@ -39,16 +39,6 @@ const PageOfTabs = () => {
         <div style={{ float: 'left', width: '40vw' }}>
           <AntdTab activeKey={activeKey} onChange={onChange} items={items} />
         </div>
-      </div>
-      <div>
-        <ResizeObserver>
-          <Label />
-        </ResizeObserver>
-        <ResizeObserver>
-          {(ref) => {
-            return <Label ref={ref}></Label>;
-          }}
-        </ResizeObserver>
       </div>
     </>
   );
