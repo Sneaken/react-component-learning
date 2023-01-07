@@ -21,7 +21,6 @@ export type TabPaneProps = {
 const TabPane = forwardRef<HTMLDivElement, TabPaneProps>(({ className, style, active, children, tabKey }, ref) => {
   return (
     <div
-      id={tabKey}
       role="tabpanel"
       tabIndex={active ? 0 : -1}
       style={style}
