@@ -1,0 +1,10 @@
+.tabs-content {
+  position: relative;
+  width: 100%;
+}
+.tabs-content-holder {
+  flex: auto;
+}
+.tabs-tabpane-hidden {
+  display: none;
+}

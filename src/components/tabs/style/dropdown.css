@@ -1,0 +1,25 @@
+.tabs-dropdown {
+  position: absolute;
+  background: #fefefe;
+  border: 1px solid black;
+  max-height: 200px;
+  overflow: auto;
+}
+.tabs-dropdown-hidden {
+  display: none;
+}
+.tabs-dropdown-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tabs-dropdown-menu-item {
+  padding: 4px 8px;
+}
+.tabs-dropdown-menu-item-selected {
+  background: red;
+}
+.tabs-dropdown-menu-item-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

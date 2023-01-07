@@ -1,0 +1,127 @@
+.tabs {
+  display: flex;
+}
+
+.tabs-top,
+.tabs-bottom {
+  flex-direction: column;
+}
+
+
+/* tab 下面的那条线 这样做的话不占空间 */
+.tabs-top > .tabs-nav::before,
+.tabs-bottom > .tabs-nav::before,
+.tabs-top > div > .tabs-nav::before,
+.tabs-bottom > div > .tabs-nav::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+  content: '';
+}
+
+.tabs-top > .tabs-nav::before,
+.tabs-top > div > .tabs-nav::before {
+  bottom: 0;
+}
+
+.tabs-top > .tabs-nav .tabs-nav-wrap::before,
+.tabs-bottom > .tabs-nav .tabs-nav-wrap::before,
+.tabs-top > div > .tabs-nav .tabs-nav-wrap::before,
+.tabs-bottom > div > .tabs-nav .tabs-nav-wrap::before,
+.tabs-top > .tabs-nav .tabs-nav-wrap::after,
+.tabs-bottom > .tabs-nav .tabs-nav-wrap::after,
+.tabs-top > div > .tabs-nav .tabs-nav-wrap::after,
+.tabs-bottom > div > .tabs-nav .tabs-nav-wrap::after {
+  top: 0;
+  bottom: 0;
+  width: 32px;
+}
+
+.tabs-top > .tabs-nav .tabs-nav-wrap::before, .tabs-bottom > .tabs-nav .tabs-nav-wrap::before, .tabs-top > div > .tabs-nav .tabs-nav-wrap::before, .tabs-bottom > div > .tabs-nav .tabs-nav-wrap::before {
+  left: 0;
+  box-shadow: inset 10px 0 8px -8px rgb(0 0 0 / 8%);
+}
+
+.tabs > .tabs-nav .tabs-nav-wrap::before, .tabs > div > .tabs-nav .tabs-nav-wrap::before, .tabs > .tabs-nav .tabs-nav-wrap::after, .tabs > div > .tabs-nav .tabs-nav-wrap::after {
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  content: '';
+  pointer-events: none;
+}
+
+
+.tabs-top .tabs-ink-bar,
+.tabs-bottom .tabs-ink-bar {
+  height: 2px;
+}
+
+.tabs-top > .tabs-nav .tabs-ink-bar-animated,
+.tabs-bottom > .tabs-nav .tabs-ink-bar-animated,
+.tabs-top > div > .tabs-nav .tabs-ink-bar-animated,
+.tabs-bottom > div > .tabs-nav .tabs-ink-bar-animated {
+  transition: width 0.3s, left 0.3s, right 0.3s;
+}
+
+.tabs-top .tabs-ink-bar {
+  bottom: 0;
+}
+
+.tabs-bottom .tabs-nav {
+  order: 1;
+}
+
+.tabs-bottom .tabs-content {
+  order: 0;
+}
+
+.tabs-bottom .tabs-ink-bar {
+  top: 0;
+}
+
+.tabs-left.tabs-editable .tabs-tab,
+.tabs-right.tabs-editable .tabs-tab {
+  padding-right: 32px;
+}
+
+.tabs-left .tabs-nav-wrap,
+.tabs-right .tabs-nav-wrap {
+  flex-direction: column;
+}
+
+.tabs-left .tabs-ink-bar,
+.tabs-right .tabs-ink-bar {
+  width: 2px;
+}
+
+.tabs-left .tabs-nav,
+.tabs-right .tabs-nav {
+  flex-direction: column;
+  min-width: 50px;
+}
+
+.tabs-left .tabs-nav-list,
+.tabs-right .tabs-nav-list,
+.tabs-left .tabs-nav-operations,
+.tabs-right .tabs-nav-operations {
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.tabs-left .tabs-ink-bar {
+  right: 0;
+}
+
+.tabs-right .tabs-nav {
+  order: 1;
+}
+
+.tabs-right .tabs-content {
+  order: 0;
+}
+
+.tabs-right .tabs-ink-bar {
+  left: 0;
+}
