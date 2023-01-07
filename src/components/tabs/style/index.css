@@ -121,6 +121,11 @@
   font-size: 14px;
 }
 
+.tabs .tabs-tab.tabs-tab-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
 .tabs .tabs-tab + .tabs-tab {
   margin: 0 0 0 32px;
 }
