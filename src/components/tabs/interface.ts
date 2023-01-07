@@ -1,5 +1,5 @@
 import type { CSSMotionProps } from 'rc-motion';
-import type { ComponentType, CSSProperties, Key, KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
+import type { ComponentType, Key, KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import type { TabNavListProps } from './tab-nav-list';
 import type { TabPaneProps } from './tab-panel-list/TabPane';
 
@@ -28,16 +28,17 @@ type RenderTabBarProps = {
   animated: AnimatedConfig;
   extra: TabBarExtraContent;
   moreIcon: ReactNode;
+  editable: EditableConfig;
   moreTransitionName: string;
   onTabClick: (key: string, e: MouseEvent | KeyboardEvent) => void;
   onTabScroll: OnTabScroll;
-  style: CSSProperties;
+  rtl: boolean;
   tabBarGutter: number;
   tabPosition: TabPosition;
 };
 
 export type RenderTabBar = (
-  props: Omit<RenderTabBarProps, 'renderTabBar'>,
+  props: Partial<RenderTabBarProps>,
   DefaultTabBar: ComponentType<TabNavListProps>
 ) => ReactElement;
 

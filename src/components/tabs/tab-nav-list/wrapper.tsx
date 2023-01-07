@@ -18,7 +18,6 @@ export type TabNavListWrapperProps = Required<
   TabNavListProps;
 
 function TabNavListWrapper({ renderTabBar, ...restProps }: TabNavListWrapperProps) {
-  // @ts-ignore
   if (renderTabBar) return renderTabBar(restProps, TabNavList);
   return <TabNavList {...restProps} />;
 }
