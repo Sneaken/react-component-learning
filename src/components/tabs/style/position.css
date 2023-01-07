@@ -58,6 +58,7 @@
   height: 2px;
 }
 
+/* ink-bar的动画是这样设置的 */
 .tabs-top > .tabs-nav .tabs-ink-bar-animated,
 .tabs-bottom > .tabs-nav .tabs-ink-bar-animated,
 .tabs-top > div > .tabs-nav .tabs-ink-bar-animated,
