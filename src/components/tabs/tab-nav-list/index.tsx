@@ -51,7 +51,7 @@ const getUnitValue = (size: SizeInfo, tabPositionTopOrBottom: boolean) => {
 };
 
 function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
-  const { animated, style, extra, rtl, children, activeKey, tabPosition, tabBarGutter, onTabClick, onTabScroll } =
+  const { activeKey, animated, children, extra, onTabClick, onTabScroll, rtl, style, tabBarGutter, tabPosition } =
     props;
   const { tabs } = useContext(TabContext);
 
@@ -310,7 +310,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
 
   return (
     <ResizeObserver onResize={onListHolderResize}>
-      <div ref={useComposeRef(ref, containerRef)!} role="tablist" className={classnames('tabs-nav')} style={style}>
+      <div ref={useComposeRef(ref, containerRef)!} role="tablist" className="tabs-nav" style={style}>
         <ExtraContent ref={extraLeftRef} position="left" extra={extra} />
         <div
           className={classnames(wrapPrefix, {
