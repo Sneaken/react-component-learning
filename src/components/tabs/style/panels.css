@@ -5,6 +5,9 @@
 .tabs-content-holder {
   flex: auto;
 }
-.tabs-tabpane-hidden {
+.tabs .tabs-tabpane {
+  outline: none;
+}
+.tabs .tabs-tabpane-hidden {
   display: none;
 }
