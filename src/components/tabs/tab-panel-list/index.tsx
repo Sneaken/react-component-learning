@@ -18,9 +18,9 @@ function TabPanelList({ activeKey, animated, tabPosition, destroyInactiveTabPane
   const tabPanePrefixCls = `tabs-tabpane`;
 
   return (
-    <div className={classnames(`tabs-content-holder`)}>
+    <div className="tabs-content-holder">
       <div
-        className={classnames(`tabs-content`, `tabs-content-${tabPosition}`, {
+        className={classnames('tabs-content', `tabs-content-${tabPosition}`, {
           [`tabs-content-animated`]: animated?.tabPane,
         })}
       >
