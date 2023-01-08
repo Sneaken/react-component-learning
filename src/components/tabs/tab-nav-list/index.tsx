@@ -371,7 +371,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
   // ========================= Effect ========================
   useEffect(() => {
     scrollToTab();
-  }, [activeKey, stringify(activeTabOffset!), stringify(tabOffsets), tabPositionTopOrBottom]);
+  }, [activeKey, centered, stringify(activeTabOffset!), stringify(tabOffsets), tabPositionTopOrBottom]);
 
   // Should recalculate when rtl changed
   useEffect(() => {
