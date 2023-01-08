@@ -155,6 +155,20 @@
   transition: all 0.3s;
 }
 
+.tabs .tabs-tab-btn:focus:not(:focus-visible),
+.tabs .tabs-tab-remove:focus:not(:focus-visible),
+.tabs .tabs-tab-btn:active,
+.tabs .tabs-tab-remove:active {
+  color: #0958d9;
+}
+
+.tabs .tabs-tab-btn:focus-visible,
+.tabs .tabs-tab-remove:focus-visible {
+  outline: 4px solid #91caff;
+  outline-offset: 1px;
+  transition: outline-offset 0s, outline 0s;
+}
+
 .tabs-tab-remove:hover {
   color: red;
 }
