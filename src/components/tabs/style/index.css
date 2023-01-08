@@ -22,6 +22,17 @@
   margin: 0 0 16px 0;
 }
 
+.tabs-bottom > .tabs-nav,
+.tabs-bottom > div > .tabs-nav {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.tabs-bottom > .tabs-nav::before,
+.tabs-bottom > div > .tabs-nav::before {
+  top: 0;
+}
+
 .tabs > .tabs-nav {
   position: relative;
   display: flex;
@@ -123,6 +134,21 @@
 .tabs-small > .tabs-nav .tabs-tab {
   padding: 8px 0;
   font-size: 14px;
+}
+
+.tabs-left > .tabs-nav .tabs-tab,
+.tabs-right > .tabs-nav .tabs-tab,
+.tabs-left > div > .tabs-nav .tabs-tab,
+.tabs-right > div > .tabs-nav .tabs-tab {
+  padding: 8px 24px;
+  text-align: center;
+}
+
+.tabs-left > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-right > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-left > div > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-right > div > .tabs-nav .tabs-tab + .tabs-tab {
+  margin: 16px 0 0 0;
 }
 
 .tabs .tabs-tab.tabs-tab-disabled {
