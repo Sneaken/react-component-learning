@@ -36,6 +36,7 @@ import TabNode from './TabNode';
 export interface TabNavListProps {
   activeKey: string;
   animated?: AnimatedConfig;
+  centered?: boolean;
   children?: (node: ReactElement) => ReactElement;
   className?: string;
   editable?: EditableConfig;
@@ -63,8 +64,19 @@ const getUnitValue = (size: SizeInfo, tabPositionTopOrBottom: boolean) => {
 };
 
 function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
-  const { activeKey, animated, children, extra, onTabClick, onTabScroll, rtl, style, tabBarGutter, tabPosition } =
-    props;
+  const {
+    activeKey,
+    animated,
+    centered,
+    children,
+    extra,
+    onTabClick,
+    onTabScroll,
+    rtl,
+    style,
+    tabBarGutter,
+    tabPosition,
+  } = props;
   const { tabs } = useContext(TabContext);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -122,6 +134,11 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
   } else {
     transformMin = Math.min(0, visibleTabContentValue - tabContentSizeValue);
     transformMax = 0;
+  }
+
+  if (centered) {
+    transformMin = Math.min(0, (visibleTabContentValue - tabContentSizeValue) / 2);
+    transformMax = -transformMin;
   }
 
   function alignInRange(value: number): number {
@@ -209,19 +226,30 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
       // ============ Align with top & bottom ============
       let newTransform = transformLeft;
 
-      // RTL
-      if (rtl) {
-        if (tabOffset.right < transformLeft) {
-          newTransform = tabOffset.right;
-        } else if (tabOffset.right + tabOffset.width > transformLeft + visibleTabContentValue) {
-          newTransform = tabOffset.right + tabOffset.width - visibleTabContentValue;
+      if (centered) {
+        // 最左边被遮住
+        if (tabOffset.left < transformMax - transformLeft) {
+          newTransform = transformMax - tabOffset.left;
         }
-      }
-      // LTR
-      else if (tabOffset.left < -transformLeft) {
-        newTransform = -tabOffset.left;
-      } else if (tabOffset.left + tabOffset.width > -transformLeft + visibleTabContentValue) {
-        newTransform = -(tabOffset.left + tabOffset.width - visibleTabContentValue);
+        // 最右边被遮住
+        else if (tabOffset.left + tabOffset.width > transformMax - transformLeft + visibleTabContentValue) {
+          newTransform = transformMax - (tabOffset.left + tabOffset.width - visibleTabContentValue);
+        }
+      } else {
+        // RTL
+        if (rtl) {
+          if (tabOffset.right < transformLeft) {
+            newTransform = tabOffset.right;
+          } else if (tabOffset.right + tabOffset.width > transformLeft + visibleTabContentValue) {
+            newTransform = tabOffset.right + tabOffset.width - visibleTabContentValue;
+          }
+        }
+        // LTR
+        else if (tabOffset.left < -transformLeft) {
+          newTransform = -tabOffset.left;
+        } else if (tabOffset.left + tabOffset.width > -transformLeft + visibleTabContentValue) {
+          newTransform = -(tabOffset.left + tabOffset.width - visibleTabContentValue);
+        }
       }
 
       setTransformTop(0);
@@ -309,6 +337,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
 
   // Delay set ink style to avoid remove tab blink
   const inkBarRafRef = useRef<number>();
+
   function cleanInkBarRaf() {
     inkBarRafRef.current && raf.cancel(inkBarRafRef.current);
   }

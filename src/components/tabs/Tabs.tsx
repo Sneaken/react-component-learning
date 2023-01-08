@@ -133,6 +133,7 @@ function Tabs(props: TabsProps, ref: Ref<HTMLDivElement>) {
   };
   const tabNavBarProps = {
     ...sharedProps,
+    centered,
     editable,
     extra: tabBarExtraContent,
     getPopupContainer,
