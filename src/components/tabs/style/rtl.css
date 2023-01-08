@@ -2,6 +2,10 @@
   direction: rtl;
 }
 
+.tabs-rtl .tabs-nav .tabs-tab:first-child {
+  margin: 0 0 0 32px;
+}
+
 .tabs-dropdown-rtl {
   direction: rtl;
 }
