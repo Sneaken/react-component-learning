@@ -6,6 +6,16 @@
   margin: 0 0 0 32px;
 }
 
+.tabs-rtl.tabs-right > .tabs-nav,
+.tabs-rtl.tabs-left > .tabs-content-holder {
+  order: 0;
+}
+
+.tabs-rtl.tabs-left > .tabs-nav,
+.tabs-rtl.tabs-right > .tabs-content-holder {
+  order: 1;
+}
+
 .tabs-dropdown-rtl {
   direction: rtl;
 }
