@@ -1,12 +1,24 @@
 import classnames from 'classnames';
-import type { CSSProperties, KeyboardEvent, MouseEvent, ReactElement, ReactNode, Ref, RefObject } from 'react';
+import type {
+  CSSProperties,
+  Dispatch,
+  KeyboardEvent,
+  MouseEvent,
+  ReactElement,
+  ReactNode,
+  Ref,
+  RefObject,
+  SetStateAction,
+} from 'react';
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
+import { ResizeObserver } from '../..';
 import raf from '../../../utils/raf';
 import { useComposeRef } from '../../../utils/ref';
-import { ResizeObserver } from '../..';
+import { stringify } from '../../../utils/stringify';
 import useOffsets from '../hooks/useOffsets';
 import useRaf, { useRafState } from '../hooks/useRaf';
 import useSyncState from '../hooks/useSyncState';
+import useTouchMove from '../hooks/useTouchMove';
 import type {
   AnimatedConfig,
   EditableConfig,
@@ -118,6 +130,48 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
     return value;
   }
 
+  // ========================= Mobile ========================
+  const touchMovingRef = useRef<number>();
+  const [lockAnimation, setLockAnimation] = useState<number>();
+
+  function doLockAnimation() {
+    setLockAnimation(Date.now());
+  }
+
+  function clearTouchMoving() {
+    window.clearTimeout(touchMovingRef.current);
+  }
+
+  useTouchMove(tabsWrapperRef, (offsetX, offsetY) => {
+    function doMove(setState: Dispatch<SetStateAction<number>>, offset: number) {
+      setState((value) => alignInRange(value + offset));
+    }
+
+    // Skip scroll if place is enough
+    if (containerExcludeExtraSizeValue >= tabContentSizeValue) return false;
+
+    if (tabPositionTopOrBottom) {
+      doMove(setTransformLeft, offsetX);
+    } else {
+      doMove(setTransformTop, offsetY);
+    }
+
+    clearTouchMoving();
+    doLockAnimation();
+
+    return true;
+  });
+
+  useEffect(() => {
+    clearTouchMoving();
+    if (lockAnimation) {
+      touchMovingRef.current = window.setTimeout(() => {
+        setLockAnimation(0);
+      }, 100);
+    }
+    return clearTouchMoving;
+  }, [lockAnimation]);
+
   const onListHolderResize = useRaf(() => {
     // Update wrapper records
     const containerSize = getSize(containerRef);
@@ -213,9 +267,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
         }}
         onFocus={() => {
           scrollToTab(key);
-          if (!tabsWrapperRef.current) {
-            return;
-          }
+          if (!tabsWrapperRef.current) return;
           // Focus element will make scrollLeft change which we should reset back
           if (!rtl) {
             tabsWrapperRef.current.scrollLeft = 0;
@@ -287,6 +339,16 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
     return cleanInkBarRaf;
   }, [activeTabOffset, tabPositionTopOrBottom, rtl]);
 
+  // ========================= Effect ========================
+  useEffect(() => {
+    scrollToTab();
+  }, [activeKey, stringify(activeTabOffset!), stringify(tabOffsets), tabPositionTopOrBottom]);
+
+  // Should recalculate when rtl changed
+  useEffect(() => {
+    onListHolderResize();
+  }, [rtl]);
+
   // ========================= Render ========================
   // const hasDropdown = !!hiddenTabs.length;
   const wrapPrefix = 'tabs-nav-wrap';
@@ -319,6 +381,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
             [`${wrapPrefix}-ping-top`]: pingTop,
             [`${wrapPrefix}-ping-bottom`]: pingBottom,
           })}
+          ref={tabsWrapperRef}
         >
           <ResizeObserver onResize={onListHolderResize}>
             <div
@@ -326,7 +389,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
               className="tabs-nav-list"
               style={{
                 transform: `translate(${transformLeft}px, ${transformTop}px)`,
-                // transition: lockAnimation ? 'none' : undefined,
+                transition: lockAnimation ? 'none' : undefined,
               }}
             >
               {tabNodes}
