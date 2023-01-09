@@ -30,7 +30,7 @@ const ExtraContent = forwardRef<HTMLDivElement, ExtraContentProps>(({ position, 
   if (!content) return null;
 
   return (
-    <div className="extra-content" ref={ref}>
+    <div className="tabs-extra-content" ref={ref}>
       {content}
     </div>
   );

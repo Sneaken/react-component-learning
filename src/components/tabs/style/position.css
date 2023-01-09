@@ -45,6 +45,14 @@
   box-shadow: inset 10px 0 8px -8px rgb(0 0 0 / 8%);
 }
 
+.tabs-top > .tabs-nav .tabs-nav-wrap::after,
+.tabs-bottom > .tabs-nav .tabs-nav-wrap::after,
+.tabs-top > div > .tabs-nav .tabs-nav-wrap::after,
+.tabs-bottom > div > .tabs-nav .tabs-nav-wrap::after {
+  right: 0;
+  box-shadow: inset -10px 0 8px -8px rgb(0 0 0 / 8%);
+}
+
 .tabs > .tabs-nav .tabs-nav-wrap::before,
 .tabs > div > .tabs-nav .tabs-nav-wrap::before,
 .tabs > .tabs-nav .tabs-nav-wrap::after,
@@ -57,6 +65,19 @@
   pointer-events: none;
 }
 
+.tabs-top > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-left::before,
+.tabs-bottom > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-left::before,
+.tabs-top > div > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-left::before,
+.tabs-bottom > div > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-left::before {
+  opacity: 1;
+}
+
+.tabs-top > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-right::after,
+.tabs-bottom > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-right::after,
+.tabs-top > div > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-right::after,
+.tabs-bottom > div > .tabs-nav .tabs-nav-wrap.tabs-nav-wrap-ping-right::after {
+  opacity: 1;
+}
 
 .tabs-top .tabs-ink-bar,
 .tabs-bottom .tabs-ink-bar {
