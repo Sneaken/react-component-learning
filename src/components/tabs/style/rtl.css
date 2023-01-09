@@ -16,6 +16,11 @@
   order: 1;
 }
 
+.tabs-rtl .tabs-nav .tabs-tab .tabs-tab-remove {
+  margin-right: 8px;
+  margin-left: -4px;
+}
+
 .tabs-dropdown-rtl {
   direction: rtl;
 }
