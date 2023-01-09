@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import type { MouseEvent, KeyboardEvent, ReactElement, ReactNode, FocusEventHandler, CSSProperties } from 'react';
+import type { CSSProperties, FocusEventHandler, KeyboardEvent, MouseEvent, ReactElement, ReactNode } from 'react';
 import KeyCode from '../../../utils/KeyCode';
 import type { EditableConfig, Tab } from '../interface';
 
@@ -10,7 +10,6 @@ interface TabNodeProps {
   onClick?: (e: MouseEvent | KeyboardEvent) => void;
   onFocus: FocusEventHandler;
   onResize?: (width: number, height: number, left: number, top: number) => void;
-  removeAriaLabel?: string;
   removeIcon?: ReactNode;
   renderWrapper?: (node: ReactElement) => ReactElement;
   style?: CSSProperties;
@@ -19,10 +18,9 @@ interface TabNodeProps {
 
 function TabNode({
   active,
-  tab: { key, label, disabled },
+  tab: { key, label, disabled, closeIcon },
   closable,
   renderWrapper,
-  removeAriaLabel,
   editable,
   onClick,
   onFocus,
@@ -35,6 +33,15 @@ function TabNode({
   function onInternalClick(e: MouseEvent | KeyboardEvent) {
     if (disabled) return;
     onClick?.(e);
+  }
+
+  function onRemoveTab(event: MouseEvent | KeyboardEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    editable!.onEdit('remove', {
+      key,
+      event,
+    });
   }
 
   const node: ReactElement = (
@@ -71,21 +78,21 @@ function TabNode({
         {label}
       </div>
 
-      {/*/!* Remove Button *!/*/}
-      {/*{removable && (*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    aria-label={removeAriaLabel || 'remove'}*/}
-      {/*    tabIndex={0}*/}
-      {/*    className={`${tabPrefix}-remove`}*/}
-      {/*    onClick={(e) => {*/}
-      {/*      e.stopPropagation();*/}
-      {/*      onRemoveTab(e);*/}
-      {/*    }}*/}
-      {/*  >*/}
-      {/*    {closeIcon || editable.removeIcon || '×'}*/}
-      {/*  </button>*/}
-      {/*)}*/}
+      {/* Remove Button */}
+      {removable && (
+        <button
+          type="button"
+          aria-label="remove"
+          tabIndex={0}
+          className={`${tabPrefix}-remove`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemoveTab(e);
+          }}
+        >
+          {closeIcon || editable.removeIcon || '×'}
+        </button>
+      )}
     </div>
   );
 

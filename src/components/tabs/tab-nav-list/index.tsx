@@ -19,6 +19,7 @@ import useOffsets from '../hooks/useOffsets';
 import useRaf, { useRafState } from '../hooks/useRaf';
 import useSyncState from '../hooks/useSyncState';
 import useTouchMove from '../hooks/useTouchMove';
+import useVisibleRange from '../hooks/useVisibleRange';
 import type {
   AnimatedConfig,
   EditableConfig,
@@ -30,7 +31,9 @@ import type {
   TabSizeMap,
 } from '../interface';
 import TabContext from '../TabContext';
+import AddButton from './AddButton';
 import ExtraContent from './ExtraContent';
+import OperationNode from './OperationNode';
 import TabNode from './TabNode';
 
 export interface TabNavListProps {
@@ -69,6 +72,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
     animated,
     centered,
     children,
+    editable,
     extra,
     onTabClick,
     onTabScroll,
@@ -189,29 +193,28 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
     return clearTouchMoving;
   }, [lockAnimation]);
 
-  const onListHolderResize = useRaf(() => {
-    // Update wrapper records
-    const containerSize = getSize(containerRef);
-    const extraLeftSize = getSize(extraLeftRef);
-    const extraRightSize = getSize(extraRightRef);
-    setContainerExcludeExtraSize([
-      containerSize[0] - extraLeftSize[0] - extraRightSize[0],
-      containerSize[1] - extraLeftSize[1] - extraRightSize[1],
-    ]);
+  // ===================== Visible Range =====================
+  // Render tab node & collect tab offset
+  const [visibleStart, visibleEnd] = useVisibleRange(
+    tabOffsets,
+    // Container
+    visibleTabContentValue,
+    // Transform
+    tabPositionTopOrBottom ? transformLeft : transformTop,
+    // Tabs
+    tabContentSizeValue,
+    // Add
+    addSizeValue,
+    // Operation
+    operationSizeValue,
+    { ...props, tabs }
+  );
 
-    const newAddSize = getSize(innerAddButtonRef);
-    setAddSize(newAddSize);
+  // ======================== Dropdown =======================
+  const startHiddenTabs = tabs.slice(0, visibleStart);
+  const endHiddenTabs = tabs.slice(visibleEnd + 1);
+  const hiddenTabs = [...startHiddenTabs, ...endHiddenTabs];
 
-    const newOperationSize = getSize(operationsRef);
-    setOperationSize(newOperationSize);
-
-    // Which includes add button size
-    const tabContentFullSize = getSize(tabListRef);
-    setTabContentSize([tabContentFullSize[0] - newAddSize[0], tabContentFullSize[1] - newAddSize[1]]);
-
-    // Update buttons records
-    updateTabSizes();
-  });
   // ========================= Scroll ========================
   const scrollToTab = (key = activeKey) => {
     const tabOffset = tabOffsets.get(key) || {
@@ -285,11 +288,10 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
         tab={tab}
         /* first node should not have margin left */
         style={i === 0 ? undefined : tabNodeStyle}
-        // closable={tab.closable}
-        // editable={editable}
+        closable={tab.closable}
+        editable={editable}
         active={key === activeKey}
         renderWrapper={children}
-        // removeAriaLabel={locale?.removeAriaLabel}
         onClick={(e) => {
           onTabClick?.(key, e);
         }}
@@ -329,6 +331,30 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
   useEffect(() => {
     updateTabSizes();
   }, [tabs.map((tab) => tab.key).join('_')]);
+
+  const onListHolderResize = useRaf(() => {
+    // Update wrapper records
+    const containerSize = getSize(containerRef);
+    const extraLeftSize = getSize(extraLeftRef);
+    const extraRightSize = getSize(extraRightRef);
+    setContainerExcludeExtraSize([
+      containerSize[0] - extraLeftSize[0] - extraRightSize[0],
+      containerSize[1] - extraLeftSize[1] - extraRightSize[1],
+    ]);
+
+    const newAddSize = getSize(innerAddButtonRef);
+    setAddSize(newAddSize);
+
+    const newOperationSize = getSize(operationsRef);
+    setOperationSize(newOperationSize);
+
+    // Which includes add button size
+    const tabContentFullSize = getSize(tabListRef);
+    setTabContentSize([tabContentFullSize[0] - newAddSize[0], tabContentFullSize[1] - newAddSize[1]]);
+
+    // Update buttons records
+    updateTabSizes();
+  });
 
   // =================== Link & Operations ===================
   const [inkStyle, setInkStyle] = useState<CSSProperties>();
@@ -379,7 +405,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
   }, [rtl]);
 
   // ========================= Render ========================
-  // const hasDropdown = !!hiddenTabs.length;
+  const hasDropdown = !!hiddenTabs.length;
   const wrapPrefix = 'tabs-nav-wrap';
   let pingLeft: boolean = false;
   let pingRight: boolean = false;
@@ -422,16 +448,14 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
               }}
             >
               {tabNodes}
-              {/*<AddButton*/}
-              {/*  ref={innerAddButtonRef}*/}
-              {/*  prefixCls={prefixCls}*/}
-              {/*  locale={locale}*/}
-              {/*  editable={editable}*/}
-              {/*  style={{*/}
-              {/*    ...(tabNodes.length === 0 ? undefined : tabNodeStyle),*/}
-              {/*    visibility: hasDropdown ? 'hidden' : null,*/}
-              {/*  }}*/}
-              {/*/>*/}
+              <AddButton
+                ref={innerAddButtonRef}
+                editable={editable}
+                style={{
+                  ...(tabNodes.length === 0 ? undefined : tabNodeStyle),
+                  visibility: hasDropdown ? 'hidden' : undefined,
+                }}
+              />
 
               <div
                 className={classnames(`tabs-ink-bar`, {
@@ -442,6 +466,16 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
             </div>
           </ResizeObserver>
         </div>
+
+        <OperationNode
+          id={''}
+          mobile={false}
+          {...props}
+          ref={operationsRef}
+          tabs={hiddenTabs}
+          className={classnames({ [operationsHiddenClassName]: !hasDropdown })}
+          tabMoving={!!lockAnimation}
+        />
         <ExtraContent ref={extraRightRef} position="right" extra={extra} />
       </div>
     </ResizeObserver>

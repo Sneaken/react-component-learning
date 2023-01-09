@@ -128,8 +128,28 @@
   transition: outline-offset 0s, outline 0s;
 }
 
-.tabs-tab-remove:hover {
-  color: red;
+.tabs .tabs-tab-remove {
+  flex: none;
+  margin-right: -4px;
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tabs .tabs-tab-remove:hover {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.tabs .tabs-tab-btn:focus-visible,
+.tabs .tabs-tab-remove:focus-visible {
+  outline: 4px solid #91caff;
+  outline-offset: 1px;
+  transition: outline-offset 0s, outline 0s;
 }
 
 .tabs-tab-active {
@@ -146,4 +166,32 @@
 
 .tabs-extra-content {
   flex: none;
+}
+
+.tabs > .tabs-nav .tabs-nav-add,
+.tabs > div > .tabs-nav .tabs-nav-add {
+  min-width: 40px;
+  margin-left: 2px;
+  padding: 0 8px;
+  background: transparent;
+  border: 1px solid rgba(5, 5, 5, 0.06);
+  border-radius: 8px 8px 0 0;
+  outline: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.88);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.tabs > .tabs-nav .tabs-nav-operations,
+.tabs > div > .tabs-nav .tabs-nav-operations {
+  display: flex;
+  align-self: stretch;
+}
+
+.tabs > .tabs-nav .tabs-nav-more,
+.tabs > div > .tabs-nav .tabs-nav-more {
+  position: relative;
+  padding: 8px 16px;
+  background: transparent;
+  border: 0;
 }

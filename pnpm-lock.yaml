@@ -10,6 +10,8 @@ specifiers:
   '@vitejs/plugin-react-swc': ^3.0.0
   antd: ^5.1.2
   classnames: ^2.3.2
+  rc-dropdown: ^4.0.1
+  rc-menu: ^9.8.1
   rc-motion: ^2.6.2
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -22,6 +24,8 @@ dependencies:
   '@ant-design/icons': 4.8.0_biqbaboplfbrettd7655fr4n2y
   antd: 5.1.2_biqbaboplfbrettd7655fr4n2y
   classnames: 2.3.2
+  rc-dropdown: 4.0.1_biqbaboplfbrettd7655fr4n2y
+  rc-menu: 9.8.1_biqbaboplfbrettd7655fr4n2y
   rc-motion: 2.6.2_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
