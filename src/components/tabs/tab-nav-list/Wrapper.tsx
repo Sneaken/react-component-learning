@@ -1,4 +1,3 @@
-import React from 'react';
 import TabNavList, { type TabNavListProps } from './';
 
 export type TabNavListWrapperProps = Required<

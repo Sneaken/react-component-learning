@@ -17,7 +17,7 @@ import useAnimateConfig from './hooks/useAnimateConfig';
 import type { AnimatedConfig, EditableConfig, RenderTabBar, Tab, TabBarExtraContent } from './interface';
 import { OnTabScroll } from './interface';
 import './style/index.css';
-import TabNavListWrapper from './tab-nav-list/wrapper';
+import TabNavListWrapper from './tab-nav-list/Wrapper';
 import TabPanelList from './tab-panel-list';
 import TabContext from './TabContext';
 
