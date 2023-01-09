@@ -2,7 +2,7 @@
   direction: rtl;
 }
 
-.tabs-rtl .tabs-nav .tabs-tab + .tabs-tab {
+.tabs-rtl:not(.tabs-card) .tabs-nav .tabs-tab + .tabs-tab {
   margin: 0 32px 0 0;
 }
 

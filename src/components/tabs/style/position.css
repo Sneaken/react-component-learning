@@ -7,6 +7,75 @@
   flex-direction: column;
 }
 
+.tabs-card.tabs-top > .tabs-nav .tabs-tab-active,
+.tabs-card.tabs-top > div > .tabs-nav .tabs-tab-active {
+  border-bottom-color: #ffffff;
+}
+
+.tabs-card.tabs-bottom > .tabs-nav .tabs-tab-active,
+.tabs-card.tabs-bottom > div > .tabs-nav .tabs-tab-active {
+  border-top-color: #ffffff;
+}
+
+.tabs-card.tabs-left > .tabs-nav .tabs-tab-active,
+.tabs-card.tabs-left > div > .tabs-nav .tabs-tab-active {
+  border-right-color: #ffffff;
+}
+
+.tabs-card.tabs-right > .tabs-nav .tabs-tab-active,
+.tabs-card.tabs-right > div > .tabs-nav .tabs-tab-active {
+  border-left-color: #ffffff;
+}
+
+.tabs-card.tabs-top > .tabs-nav .tabs-tab,
+.tabs-card.tabs-top > div > .tabs-nav .tabs-tab {
+  border-radius: 8px 8px 0 0;
+}
+
+.tabs-card.tabs-bottom > .tabs-nav .tabs-tab,
+.tabs-card.tabs-bottom > div > .tabs-nav .tabs-tab {
+  border-radius: 0 0 8px 8px;
+}
+
+.tabs-card.tabs-left > .tabs-nav .tabs-tab,
+.tabs-card.tabs-left > div > .tabs-nav .tabs-tab {
+  border-radius: 8px 0 0 8px;
+}
+
+.tabs-card.tabs-right > .tabs-nav .tabs-tab,
+.tabs-card.tabs-right > div > .tabs-nav .tabs-tab {
+  border-radius: 0 8px 8px 0;
+}
+
+.tabs-card.tabs-top > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-card.tabs-bottom > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-card.tabs-top > div > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-card.tabs-bottom > div > .tabs-nav .tabs-tab + .tabs-tab {
+  margin-left: 2px;
+}
+
+.tabs-card.tabs-left > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-card.tabs-right > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-card.tabs-left > div > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-card.tabs-right > div > .tabs-nav .tabs-tab + .tabs-tab {
+  margin-top: 2px;
+}
+
+.tabs-left > .tabs-nav .tabs-tab,
+.tabs-right > .tabs-nav .tabs-tab,
+.tabs-left > div > .tabs-nav .tabs-tab,
+.tabs-right > div > .tabs-nav .tabs-tab {
+  padding: 8px 24px;
+  text-align: center;
+}
+
+.tabs-left > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-right > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-left > div > .tabs-nav .tabs-tab + .tabs-tab,
+.tabs-right > div > .tabs-nav .tabs-tab + .tabs-tab {
+  margin: 16px 0 0 0;
+}
+
 /* tab 下面的那条线 这样做的话不占空间 */
 .tabs-top > .tabs-nav::before,
 .tabs-bottom > .tabs-nav::before,

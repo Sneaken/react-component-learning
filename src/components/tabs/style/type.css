@@ -1,0 +1,19 @@
+.tabs-card > .tabs-nav .tabs-tab,
+.tabs-card > div > .tabs-nav .tabs-tab {
+  margin: 0;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(5, 5, 5, 0.06);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.tabs-card > .tabs-nav .tabs-tab-active,
+.tabs-card > div > .tabs-nav .tabs-tab-active {
+  color: #1677ff;
+  background: #ffffff;
+}
+
+.tabs-card > .tabs-nav .tabs-ink-bar,
+.tabs-card > div > .tabs-nav .tabs-ink-bar {
+  visibility: hidden;
+}

@@ -1,0 +1,13 @@
+.tabs-large > .tabs-nav .tabs-tab {
+  padding: 16px 0;
+  font-size: 16px;
+}
+
+.tabs-small > .tabs-nav .tabs-tab {
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.tabs-card.tabs-small.tabs-top > .tabs-nav .tabs-tab {
+  border-radius: 6px 6px 0 0;
+}
