@@ -1,0 +1,18 @@
+.wave {
+    position: fixed;
+    background: transparent;
+    pointer-events: none;
+    box-sizing: border-box;
+    color: var(--wave-color, #1677ff);
+    box-shadow: 0 0 0 0 currentcolor;
+    opacity: 0.2;
+
+    &.wave-motion-appear {
+        transition: box-shadow 0.4s cubic-bezier(0.08, 0.82, 0.17, 1), opacity 2s cubic-bezier(0.08, 0.82, 0.17, 1);
+
+        &-active {
+            box-shadow: 0 0 0 6px currentcolor;
+            opacity: 0;
+        }
+    }
+}

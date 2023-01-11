@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, RefObject } from 'react';
-import toArray from '../../utils/Children/toArray';
-import { warning } from '../../utils/warning';
+import toArray from '@/utils/Children/toArray';
+import { warning } from '@/utils/warning';
 import SingleObserver from './single-observer';
 
 export interface SizeInfo {

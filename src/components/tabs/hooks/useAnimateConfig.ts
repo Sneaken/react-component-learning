@@ -1,5 +1,5 @@
 import type { TabsProps } from '..';
-import { warning } from '../../../utils/warning';
+import { warning } from '@/utils/warning';
 import type { AnimatedConfig } from '../interface';
 
 export default function useAnimateConfig(

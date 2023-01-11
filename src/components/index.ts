@@ -14,3 +14,6 @@ export type {
 
 export { default as ResizeObserver } from './resize-observer';
 export type { ResizeObserverProps, SizeInfo, OnResize } from './resize-observer';
+
+export { default as Button } from './button';
+export type { ButtonProps } from './button';

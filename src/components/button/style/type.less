@@ -1,0 +1,319 @@
+.btn {
+    &.btn-default {
+        background-color: #ffffff;
+        border-color: #d9d9d9;
+        box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+
+        &:disabled {
+            cursor: not-allowed;
+            border-color: #d9d9d9;
+            color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(0, 0, 0, 0.04);
+            box-shadow: none;
+        }
+
+        &:not(:disabled) {
+            &:hover {
+                color: #4096ff;
+                border-color: #4096ff;
+            }
+
+            &:active {
+                color: #0958d9;
+                border-color: #0958d9;
+            }
+        }
+
+        &.btn-dangerous {
+            color: #ff4d4f;
+            border-color: #ff4d4f;
+
+            &:disabled {
+                cursor: not-allowed;
+                border-color: #d9d9d9;
+                color: rgba(0, 0, 0, 0.25);
+                background-color: rgba(0, 0, 0, 0.04);
+                box-shadow: none;
+            }
+
+            &:not(:disabled) {
+                &:hover {
+                    border-color: #ffa39e;
+                    color: #ff7875;
+                }
+
+                &:active {
+                    border-color: #d9363e;
+                    color: #d9363e;
+                }
+            }
+
+            &.btn-background-ghost {
+                color: #ff4d4f;
+                background-color: transparent;
+                border-color: #ff4d4f;
+                box-shadow: none;
+
+                &:disabled {
+                    cursor: not-allowed;
+                    color: rgba(0, 0, 0, 0.25);
+                    border-color: #d9d9d9;
+                }
+
+                &:not(:disabled) {
+                    &:hover {
+                        background-color: transparent;
+                    }
+
+                    &:active {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+    }
+
+    &.btn-primary {
+        color: #fff;
+        background-color: #1677ff;
+        box-shadow: 0 2px 0 rgb(5 145 255 / 10%);
+
+        &:disabled {
+            /* 给 button 用的 */
+            cursor: not-allowed;
+            border-color: #d9d9d9;
+            color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(0, 0, 0, 0.04);
+            box-shadow: none;
+        }
+
+        &:not(:disabled) {
+            &:hover {
+                color: #fff;
+                background-color: #4096ff;
+            }
+
+            &:active {
+                color: #fff;
+                background-color: #0958d9;
+            }
+        }
+
+        &.btn-dangerous {
+            background-color: #ff4d4f;
+            box-shadow: 0 2px 0 rgb(255 38 5 / 6%);
+
+            &:disabled {
+                cursor: not-allowed;
+                border-color: #d9d9d9;
+                color: rgba(0, 0, 0, 0.25);
+                background-color: rgba(0, 0, 0, 0.04);
+                box-shadow: none;
+            }
+
+            &:not(:disabled) {
+                &:hover {
+                    background-color: #ff7875;
+                }
+
+                &:active {
+                    background-color: #d9363e;
+                }
+            }
+
+            &.btn-background-ghost {
+                color: #ff4d4f;
+                background-color: transparent;
+                border-color: #ff4d4f;
+                box-shadow: none;
+
+                &:disabled {
+                    cursor: not-allowed;
+                    color: rgba(0, 0, 0, 0.25);
+                    border-color: #d9d9d9;
+                }
+
+                &:not(:disabled) {
+                    &:hover {
+                        background-color: transparent;
+                        color: #ff7875;
+                        border-color: #ff7875;
+                    }
+
+                    &:active {
+                        background-color: transparent;
+                        color: #d9363e;
+                        border-color: #d9363e;
+                    }
+                }
+            }
+        }
+    }
+
+    &.btn-dashed {
+        background-color: #ffffff;
+        border-color: #d9d9d9;
+        box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+        border-style: dashed;
+
+        &:disabled {
+            cursor: not-allowed;
+            border-color: #d9d9d9;
+            color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(0, 0, 0, 0.04);
+            box-shadow: none;
+        }
+
+        &:not(:disabled) {
+            &:focus-visible {
+                outline: 4px solid #91caff;
+                outline-offset: 1px;
+                transition: outline-offset 0s, outline 0s;
+            }
+
+            &:hover {
+                color: #4096ff;
+                border-color: #4096ff;
+            }
+
+            &:active {
+                color: #0958d9;
+                border-color: #0958d9;
+            }
+        }
+
+        &.btn-dangerous {
+            color: #ff4d4f;
+            border-color: #ff4d4f;
+
+            &:disabled {
+                cursor: not-allowed;
+                border-color: #d9d9d9;
+                color: rgba(0, 0, 0, 0.25);
+                background-color: rgba(0, 0, 0, 0.04);
+                box-shadow: none;
+            }
+
+            &:not(:disabled) {
+                &:hover {
+                    color: #ff7875;
+                    border-color: #ffa39e;
+                }
+
+                &:active {
+                    color: #d9363e;
+                    border-color: #d9363e;
+                }
+            }
+
+            &.btn-background-ghost {
+                color: #ff4d4f;
+                background-color: transparent;
+                border-color: #ff4d4f;
+                box-shadow: none;
+
+                &:disabled {
+                    cursor: not-allowed;
+                    color: rgba(0, 0, 0, 0.25);
+                    border-color: #d9d9d9;
+                }
+
+                &:not(:disabled) {
+                    &:hover {
+                        background-color: transparent;
+                    }
+
+                    &:active {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    &.btn-link {
+        color: #1677ff;
+
+        &:disabled {
+            cursor: not-allowed;
+            color: rgba(0, 0, 0, 0.25);
+        }
+
+        &:not(:disabled) {
+            &:focus-visible {
+                outline: 4px solid #91caff;
+                outline-offset: 1px;
+                transition: outline-offset 0s, outline 0s;
+            }
+
+            &:hover {
+                color: #69b1ff;
+            }
+
+            &:active {
+                color: #0958d9;
+            }
+        }
+
+        &.btn-dangerous {
+            color: #ff4d4f;
+
+            &:disabled {
+                cursor: not-allowed;
+                color: rgba(0, 0, 0, 0.25);
+            }
+
+            &:not(:disabled) {
+                &:hover {
+                    color: #ff7875;
+                }
+
+                &:active {
+                    color: #d9363e;
+                }
+            }
+        }
+    }
+
+    &.btn-text {
+        &:disabled {
+            cursor: not-allowed;
+            color: rgba(0, 0, 0, 0.25);
+        }
+
+        &:not(:disabled) {
+            &:hover {
+                color: rgba(0, 0, 0, 0.88);
+                background-color: rgba(0, 0, 0, 0.06);
+            }
+
+            &:active {
+                color: rgba(0, 0, 0, 0.88);
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        &.btn-dangerous {
+            color: #ff4d4f;
+
+            &:disabled {
+                cursor: not-allowed;
+                color: rgba(0, 0, 0, 0.25);
+            }
+
+            &:not(:disabled) {
+                &:hover {
+                    color: #ff7875;
+                    background-color: #fff2f0;
+                }
+
+                &:active {
+                    color: #ff7875;
+                    background-color: #fff2f0;
+                }
+            }
+        }
+    }
+}
+
