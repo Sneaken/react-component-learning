@@ -1,10 +1,10 @@
-import "./App.css";
-import Tabs from "./pages/Tabs";
+import './App.css';
+import Button from './pages/Button';
 
 function App() {
   return (
     <div className="app">
-      <Tabs />
+      <Button />
     </div>
   );
 }
