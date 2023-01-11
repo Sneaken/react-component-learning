@@ -13,8 +13,8 @@ import type {
 import { forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import { ResizeObserver } from '../..';
 import raf from '../../../utils/raf';
-import { useComposeRef } from '../../../utils/ref';
-import { stringify } from '../../../utils/stringify';
+import { useComposeRef } from '@/utils/ref';
+import { stringify } from '@/utils/stringify';
 import useOffsets from '../hooks/useOffsets';
 import useRaf, { useRafState } from '../hooks/useRaf';
 import useSyncState from '../hooks/useSyncState';
@@ -248,9 +248,12 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
           }
         }
         // LTR
+        // 左侧被遮住
         else if (tabOffset.left < -transformLeft) {
           newTransform = -tabOffset.left;
-        } else if (tabOffset.left + tabOffset.width > -transformLeft + visibleTabContentValue) {
+        }
+        // 右侧被遮住
+        else if (tabOffset.left + tabOffset.width > -transformLeft + visibleTabContentValue) {
           newTransform = -(tabOffset.left + tabOffset.width - visibleTabContentValue);
         }
       }
@@ -397,7 +400,14 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
   // ========================= Effect ========================
   useEffect(() => {
     scrollToTab();
-  }, [activeKey, centered, stringify(activeTabOffset!), stringify(tabOffsets), tabPositionTopOrBottom]);
+  }, [
+    activeKey,
+    centered,
+    stringify(activeTabOffset!),
+    stringify(tabOffsets),
+    tabPositionTopOrBottom,
+    tabContentSizeValue,
+  ]);
 
   // Should recalculate when rtl changed
   useEffect(() => {
