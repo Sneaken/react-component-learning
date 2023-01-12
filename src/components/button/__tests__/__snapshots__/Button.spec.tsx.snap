@@ -8,3 +8,10 @@ exports[`Button > renders correctly 1`] = `
   Follow
 </button>
 `;
+
+exports[`Button > should render empty button without errors 1`] = `
+<button
+  class="btn btn-default btn-middle"
+  type="button"
+/>
+`;

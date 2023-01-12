@@ -46,4 +46,14 @@ describe('Button', () => {
     //   If you want this method to be called before each test automatically, you can enable restoreMocks setting in config.
     mockWarn.mockRestore();
   });
+
+  it('should render empty button without errors', () => {
+    const { container } = render(
+      <Button>
+        {null}
+        {undefined}
+      </Button>
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
