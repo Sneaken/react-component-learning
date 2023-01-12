@@ -135,4 +135,15 @@ describe('Button', () => {
     expect(render(<Button>0</Button>).container.firstChild).toMatchSnapshot();
     expect(render(<Button>{false}</Button>).container.firstChild).toMatchSnapshot();
   });
+
+  it('should not render as link button when href is undefined', async () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Button type="primary" href={undefined}>
+        button
+      </Button>
+    );
+    expect(firstChild).toMatchSnapshot();
+  });
 });
