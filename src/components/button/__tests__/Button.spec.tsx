@@ -194,4 +194,14 @@ describe('Button', () => {
     fireEvent.click(firstChild!);
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it('should match class .btn-disabled when button is disabled and href is not undefined', () => {
+    expect(
+      render(
+        <Button href="https://ant.design" disabled>
+          click me
+        </Button>
+      ).container.querySelectorAll('.btn-disabled')
+    ).toHaveLength(1);
+  });
 });
