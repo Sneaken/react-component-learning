@@ -138,15 +138,16 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(fu
   const _className = classnames(
     'btn',
     {
-      [`btn-${shape}`]: shape !== 'default' && shape,
-      [`btn-${type}`]: type,
-      [`btn-${size}`]: size,
       'btn-background-ghost': ghost && !isUnBorderedButtonType(type),
-      'btn-icon-only': !children && children !== 0 && iconType,
       'btn-block': block,
       'btn-dangerous': !!danger,
-      // 'button-rtl': direction === 'rtl',
       'btn-disabled': hrefAndDisabled,
+      'btn-icon-only': !children && children !== 0 && iconType,
+      'btn-loading': innerLoading,
+      // 'btn-rtl': direction === 'rtl',
+      [`btn-${shape}`]: shape !== 'default' && shape,
+      [`btn-${size}`]: size,
+      [`btn-${type}`]: type,
     },
     className
   );
