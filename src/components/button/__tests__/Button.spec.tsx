@@ -181,4 +181,17 @@ describe('Button', () => {
     expect(warnSpy).toHaveBeenCalledWith("Warning: [Button] `link` or `text` button can't be a `ghost` button.");
     warnSpy.mockRestore();
   });
+
+  it('should not redirect when button is disabled', () => {
+    const onClick = vi.fn();
+    const {
+      container: { firstChild },
+    } = render(
+      <Button href="https://ant.design" onClick={onClick} disabled>
+        click me
+      </Button>
+    );
+    fireEvent.click(firstChild!);
+    expect(onClick).not.toHaveBeenCalled();
+  });
 });
