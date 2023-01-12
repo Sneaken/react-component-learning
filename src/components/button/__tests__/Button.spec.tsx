@@ -16,4 +16,9 @@ describe('Button', () => {
     // container.firstChild 说的就是 Button 组件
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it('mount correctly', () => {
+    // 渲染正常没有抛出异常
+    expect(() => render(<Button>Follow</Button>)).not.toThrow();
+  });
 });
