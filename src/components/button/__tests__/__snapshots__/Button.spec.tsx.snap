@@ -15,3 +15,13 @@ exports[`Button > should render empty button without errors 1`] = `
   type="button"
 />
 `;
+
+exports[`Button > should support link button 1`] = `
+<a
+  class="btn btn-default btn-middle"
+  href="https://ant.design"
+  target="_blank"
+>
+  link button
+</a>
+`;

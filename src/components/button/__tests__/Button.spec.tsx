@@ -120,4 +120,13 @@ describe('Button', () => {
     fireEvent.click(buttonNode!);
     expect(onClick).not.toHaveBeenCalled();
   });
+
+  it('should support link button', () => {
+    const { container } = render(
+      <Button target="_blank" href="https://ant.design">
+        link button
+      </Button>
+    );
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
