@@ -114,6 +114,18 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(fu
     (onClick as MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
   };
 
+  if (process.env.NODE_ENV !== 'production') {
+    switch (size) {
+      case 'large':
+      case 'small':
+      case 'middle':
+      case undefined:
+        break;
+      default:
+        warning(!size, 'Button', 'Invalid prop `size`.');
+    }
+  }
+
   warning(!(ghost && isUnBorderedButtonType(type)), 'Button', "`link` or `text` button can't be a `ghost` button.");
 
   // react-router 里面 Link 组件 允许使用自定义 组件 需要透传 navigate （可能是旧版本的react-router-dom 待定）

@@ -1,3 +1,5 @@
+import noop from '@/utils/noop';
+import { resetWarned } from '@/utils/warning';
 import mountTest from '@tests/shared/mountTest';
 import { render } from '@tests/utils';
 import Button from '..';
@@ -20,5 +22,28 @@ describe('Button', () => {
   it('mount correctly', () => {
     // 渲染正常没有抛出异常
     expect(() => render(<Button>Follow</Button>)).not.toThrow();
+  });
+
+  it('warns if size is wrong', () => {
+    resetWarned();
+    // vi.spyOn: Creates a spy on a method or getter/setter of an object.
+    // mockImplementation: Accepts a function that will be used as an implementation of the mock.
+    // 如果不传一个空函数会把错误信息打印的控制台上（从行为上来说这个正确的, 但是从看测试报告的角度来看是不想要看到的）
+    const mockWarn = vi.spyOn(console, 'error').mockImplementation(noop);
+    const size = 'who am I';
+    // @ts-expect-error: Type '"who am I"' is not assignable to type 'SizeType'.ts(2322)
+    render(<Button size={size} />);
+
+    // toHaveBeenCalledWith:
+    //   This assertion checks if a function was called at least once with certain parameters.
+    //   Requires a spy function to be passed to expect.
+    expect(mockWarn).toHaveBeenCalledWith('Warning: [Button] Invalid prop `size`.');
+
+    // mockRestore:
+    //   Does what mockReset does and restores inner implementation to the original function.
+    //   Note that restoring mock from vi.fn() will set implementation to an empty function that returns undefined.
+    //   Restoring a vi.fn(impl) will restore implementation to impl.
+    //   If you want this method to be called before each test automatically, you can enable restoreMocks setting in config.
+    mockWarn.mockRestore();
   });
 });
