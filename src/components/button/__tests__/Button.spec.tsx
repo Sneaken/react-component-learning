@@ -1,7 +1,9 @@
+import type { ButtonProps } from '@/components';
 import noop from '@/utils/noop';
 import { resetWarned } from '@/utils/warning';
 import mountTest from '@tests/shared/mountTest';
-import { render } from '@tests/utils';
+import { render, fireEvent } from '@tests/utils';
+import { useState } from 'react';
 import Button from '..';
 
 describe('Button', () => {
@@ -55,5 +57,19 @@ describe('Button', () => {
       </Button>
     );
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should change loading state instantly by default', () => {
+    const LoadingButton = () => {
+      const [loading, setLoading] = useState<ButtonProps['loading']>(false);
+      return (
+        <Button loading={loading} onClick={() => setLoading(true)}>
+          Button
+        </Button>
+      );
+    };
+    const { container } = render(<LoadingButton />);
+    fireEvent.click(container.firstChild!);
+    expect(container.querySelectorAll('.btn-loading').length).toBe(1);
   });
 });
