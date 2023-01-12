@@ -34,6 +34,15 @@ exports[`Button > renders correctly 1`] = `
 </button>
 `;
 
+exports[`Button > should handle fragment as children 1`] = `
+<button
+  class="btn btn-default btn-middle"
+  type="button"
+>
+  text
+</button>
+`;
+
 exports[`Button > should not render as link button when href is undefined 1`] = `
 <button
   class="btn btn-middle btn-primary"

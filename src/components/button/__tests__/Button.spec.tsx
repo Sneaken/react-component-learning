@@ -204,4 +204,16 @@ describe('Button', () => {
       ).container.querySelectorAll('.btn-disabled')
     ).toHaveLength(1);
   });
+
+  it('should handle fragment as children', () => {
+    const {
+      container: { firstChild },
+    } = render(
+      <Button>
+        {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
+        <>text</>
+      </Button>
+    );
+    expect(firstChild).toMatchSnapshot();
+  });
 });
