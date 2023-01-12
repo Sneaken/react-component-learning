@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Button > renders correctly 1`] = `
+<button
+  class="btn btn-default btn-middle"
+  type="button"
+>
+  Follow
+</button>
+`;
