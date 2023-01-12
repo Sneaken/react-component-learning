@@ -1,10 +1,9 @@
-import type { ButtonProps } from '@/components';
 import noop from '@/utils/noop';
 import { resetWarned } from '@/utils/warning';
 import mountTest from '@tests/shared/mountTest';
-import { render, fireEvent } from '@tests/utils';
+import { act, fireEvent, render } from '@tests/utils';
 import { useState } from 'react';
-import Button from '..';
+import Button, { type ButtonProps } from '..';
 
 describe('Button', () => {
   mountTest(Button);
@@ -71,5 +70,42 @@ describe('Button', () => {
     const { container } = render(<LoadingButton />);
     fireEvent.click(container.firstChild!);
     expect(container.querySelectorAll('.btn-loading').length).toBe(1);
+  });
+
+  it('should change loading state with delay', () => {
+    const LoadingButton = () => {
+      const [loading, setLoading] = useState<ButtonProps['loading']>(false);
+      return (
+        <Button loading={loading} onClick={() => setLoading({ delay: 1000 })}>
+          Button
+        </Button>
+      );
+    };
+    const { container } = render(<LoadingButton />);
+    fireEvent.click(container.firstChild!);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
+  });
+
+  it('reset when loading back of delay', () => {
+    // useFakeTimers useRealTimers 配套使用
+    vi.useFakeTimers();
+    const { rerender, container } = render(<Button loading={{ delay: 1000 }} />);
+    rerender(<Button loading={{ delay: 2000 }} />);
+    rerender(<Button loading={false} />);
+
+    // act
+    // Just a convenience export that points to preact/test-utils/act.
+    // All renders and events being fired are wrapped in act, so you don't really need this.
+    // It's responsible for flushing all effects and rerenders after invoking it.
+    act(() => {
+      // This method will invoke every initiated timer until the timers queue is empty.
+      // It means that every timer called during runAllTimers will be fired.
+      // If you have an infinite interval, it will throw after 10 000 tries.
+      vi.runAllTimers();
+    });
+
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
+
+    vi.useRealTimers();
   });
 });
