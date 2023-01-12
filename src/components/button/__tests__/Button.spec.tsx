@@ -129,4 +129,10 @@ describe('Button', () => {
     );
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it('renders {0}, 0 and {false}', () => {
+    expect(render(<Button>{0}</Button>).container.firstChild).toMatchSnapshot();
+    expect(render(<Button>0</Button>).container.firstChild).toMatchSnapshot();
+    expect(render(<Button>{false}</Button>).container.firstChild).toMatchSnapshot();
+  });
 });

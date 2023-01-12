@@ -1,5 +1,30 @@
 // Vitest Snapshot v1
 
+exports[`Button > renders {0}, 0 and {false} 1`] = `
+<button
+  class="btn btn-default btn-middle"
+  type="button"
+>
+  0
+</button>
+`;
+
+exports[`Button > renders {0}, 0 and {false} 2`] = `
+<button
+  class="btn btn-default btn-middle"
+  type="button"
+>
+  0
+</button>
+`;
+
+exports[`Button > renders {0}, 0 and {false} 3`] = `
+<button
+  class="btn btn-default btn-middle"
+  type="button"
+/>
+`;
+
 exports[`Button > renders correctly 1`] = `
 <button
   class="btn btn-default btn-middle"
