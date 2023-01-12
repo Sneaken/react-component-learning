@@ -94,9 +94,8 @@ describe('Button', () => {
     rerender(<Button loading={false} />);
 
     // act
-    // Just a convenience export that points to preact/test-utils/act.
-    // All renders and events being fired are wrapped in act, so you don't really need this.
-    // It's responsible for flushing all effects and rerenders after invoking it.
+    //   All it does is forward all arguments to the act function if your version of react supports act.
+    //   It is recommended to use the import from @testing-library/react over react-dom/test-utils for consistency reasons.
     act(() => {
       // This method will invoke every initiated timer until the timers queue is empty.
       // It means that every timer called during runAllTimers will be fired.
@@ -107,5 +106,18 @@ describe('Button', () => {
     expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
 
     vi.useRealTimers();
+  });
+
+  it('should not clickable when button is loading', () => {
+    const onClick = vi.fn();
+    const {
+      container: { firstChild: buttonNode },
+    } = render(
+      <Button loading onClick={onClick}>
+        button
+      </Button>
+    );
+    fireEvent.click(buttonNode!);
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
