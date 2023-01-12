@@ -165,4 +165,20 @@ describe('Button', () => {
     expect(unmount).not.toThrow();
     vi.useRealTimers();
   });
+
+  it('should warning when pass type=link and ghost=true', () => {
+    resetWarned();
+    const warnSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    render(<Button type="link" ghost />);
+    expect(warnSpy).toHaveBeenCalledWith("Warning: [Button] `link` or `text` button can't be a `ghost` button.");
+    warnSpy.mockRestore();
+  });
+
+  it('should warning when pass type=text and ghost=true', () => {
+    resetWarned();
+    const warnSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    render(<Button type="text" ghost />);
+    expect(warnSpy).toHaveBeenCalledWith("Warning: [Button] `link` or `text` button can't be a `ghost` button.");
+    warnSpy.mockRestore();
+  });
 });
