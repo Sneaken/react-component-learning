@@ -1,7 +1,7 @@
 import noop from '@/utils/noop';
 import { resetWarned } from '@/utils/warning';
 import mountTest from '@tests/shared/mountTest';
-import { act, fireEvent, render } from '@tests/utils';
+import { act, fireEvent, render, waitFakeTimer } from '@tests/utils';
 import { useState } from 'react';
 import Button, { type ButtonProps } from '..';
 
@@ -145,5 +145,24 @@ describe('Button', () => {
       </Button>
     );
     expect(firstChild).toMatchSnapshot();
+  });
+
+  it('should support to change loading', async () => {
+    vi.useFakeTimers();
+    const { container, rerender, unmount } = render(<Button>Button</Button>);
+    rerender(<Button loading />);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(1);
+    rerender(<Button loading={false} />);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
+    rerender(<Button loading={{ delay: 50 }} />);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
+    await waitFakeTimer(40, 1);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
+    await waitFakeTimer(50, 1);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(1);
+    rerender(<Button loading={false} />);
+    expect(container.querySelectorAll('.btn-loading')).toHaveLength(0);
+    expect(unmount).not.toThrow();
+    vi.useRealTimers();
   });
 });
