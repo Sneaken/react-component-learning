@@ -1,0 +1,689 @@
+// Vitest Snapshot v1
+
+exports[`Tabs > Skip invalidate children 1`] = `
+<div
+  class="tabs tabs-top"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="light"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            light
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-top"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        Light
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > renderTabBar > custom-tab-bar 1`] = `
+<div
+  class="tabs tabs-top"
+>
+  <div>
+    custom-tab-bar
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-top"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > tabBarGutter should work 1`] = `
+<div
+  class="tabs tabs-top"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="0"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            0
+          </div>
+        </div>
+        <div
+          class="tabs-tab"
+          data-node-key="1"
+          style="margin-left: 4px;"
+        >
+          <div
+            aria-selected="false"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            1
+          </div>
+        </div>
+        <div
+          class="tabs-tab"
+          data-node-key="2"
+          style="margin-left: 4px;"
+        >
+          <div
+            aria-selected="false"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            2
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="margin-left: 4px; visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-top"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        0
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > tabBarGutter should work 2`] = `
+<div
+  class="tabs tabs-left"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="0"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            0
+          </div>
+        </div>
+        <div
+          class="tabs-tab"
+          data-node-key="1"
+          style="margin-top: 4px;"
+        >
+          <div
+            aria-selected="false"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            1
+          </div>
+        </div>
+        <div
+          class="tabs-tab"
+          data-node-key="2"
+          style="margin-top: 4px;"
+        >
+          <div
+            aria-selected="false"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            2
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="margin-left: 4px; visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-left"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        0
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > tabPosition > position in bottom 1`] = `
+<div
+  class="tabs tabs-bottom"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="1"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            foo
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-bottom"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > tabPosition > position in left 1`] = `
+<div
+  class="tabs tabs-left"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="1"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            foo
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-left"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > tabPosition > position in right 1`] = `
+<div
+  class="tabs tabs-right"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="1"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            foo
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-right"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs > tabPosition > position in top 1`] = `
+<div
+  class="tabs tabs-top"
+>
+  <div
+    class="tabs-nav"
+    role="tablist"
+  >
+    <div
+      class="tabs-nav-wrap"
+    >
+      <div
+        class="tabs-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="tabs-tab tabs-tab-active"
+          data-node-key="1"
+        >
+          <div
+            aria-selected="true"
+            class="tabs-tab-btn"
+            role="tab"
+            tabindex="0"
+          >
+            foo
+          </div>
+        </div>
+        <div
+          class="tabs-ink-bar tabs-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="tabs-nav-operations tabs-nav-operations-hidden"
+    >
+      <button
+        aria-controls="-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="tabs-nav-more"
+        id="-more"
+        style="visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="ellipsis"
+          class="anticon anticon-ellipsis"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="ellipsis"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="tabs-content-holder"
+  >
+    <div
+      class="tabs-content tabs-content-top"
+    >
+      <div
+        class="tabs-tabpane tabs-active"
+        role="tabpanel"
+        tabindex="0"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;

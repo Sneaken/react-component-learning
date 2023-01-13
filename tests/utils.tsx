@@ -45,9 +45,9 @@ const pureRender = render;
 
 export { customRender as render, pureRender };
 
-export async function waitFakeTimer(advanceTime = 1000, times = 20) {
+export function waitFakeTimer(advanceTime = 1000, times = 20) {
   for (let i = 0; i < times; i += 1) {
-    await act(() => {
+    act(() => {
       if (advanceTime > 0) {
         // advanceTimersByTime:
         //   Works just like runAllTimers, but will end after passed milliseconds
