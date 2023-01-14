@@ -12,9 +12,22 @@ describe('Tabs', () => {
   const hackOffsetInfo: HackInfo = {};
 
   beforeEach(() => {
+    vi.useFakeTimers();
+    // 需要 mock
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation(
+      (cb: Function) => setTimeout(cb, 16) as unknown as number
+    );
+    vi.spyOn(window, 'cancelAnimationFrame').mockImplementation((timeout) => clearTimeout(timeout));
     Object.keys(hackOffsetInfo).forEach((key) => {
       delete hackOffsetInfo[key as keyof HackInfo];
     });
+  });
+
+  afterEach(() => {
+    vi.clearAllTimers();
+    (window.requestAnimationFrame as any).mockRestore();
+    (window.cancelAnimationFrame as any).mockRestore();
+    vi.useRealTimers();
   });
 
   beforeAll(() => {
@@ -243,9 +256,7 @@ describe('Tabs', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('strictMode should show correct ink bar', () => {
-    vi.useFakeTimers();
-
+  it('strictMode should show correct ink bar', async () => {
     const { container } = render(
       <Tabs
         items={new Array(2).fill(0).map((_, index) => ({
@@ -257,11 +268,9 @@ describe('Tabs', () => {
       />
     );
 
-    waitFakeTimer(0, 100);
+    await waitFakeTimer(0, 10);
 
     expect(container.querySelector<HTMLElement>('.tabs-ink-bar')?.style?.width).toBe('20px');
-
-    vi.useRealTimers();
   });
 
   describe('onChange and onTabClick should work', () => {
