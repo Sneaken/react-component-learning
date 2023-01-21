@@ -333,7 +333,7 @@ function TabNavList(props: TabNavListProps, ref: Ref<HTMLDivElement>) {
 
   useEffect(() => {
     updateTabSizes();
-  }, [tabs.map((tab) => tab.key).join('_')]);
+  }, [tabs.map((tab) => tab.key).join('_'), activeKey]);
 
   const onListHolderResize = useRaf(() => {
     // Update wrapper records
